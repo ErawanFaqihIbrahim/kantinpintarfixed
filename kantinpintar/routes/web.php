@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SaldoController;
 use App\Http\Controllers\PembeliController;
 use App\Http\Controllers\KedaiController;
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\PesananController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,6 +49,15 @@ Route::get('/akunpembeli/denah', function () {
     return view('akunpembeli.denah');
 })->middleware(['auth:akunpembeli', 'verified'])->name('denah');
 
+Route::get ('/akunpembeli/menupembeli/{id}', [menuController::class, 'showMenu']);
+
+//detail menu
+Route::get ('/akunpembeli/menupembeli/detail/{menuID}', [menuController::class, 'showDetailMenu']);
+
+//tambah pesanan ke keranjang
+Route::post ('/akunpembeli/menupembeli/detail/keranjang/{menuID}', [PesananController::class, 'insertpesanan']);
+Route::post ('/menu/detail/keranjang/{menuID}', [PesananController::class, 'tambahPesanan']);
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -71,14 +82,33 @@ Route::get('/akunpenjual/dashboard', function () {
     return view('akunpenjual.dashboard');
 })->middleware(['auth:akunpenjual', 'verified'])->name('akunpenjual.dashboard');
 
-// daftar kedai
+// nampilin edit/daftar kedai
 Route::get('/akunpenjual/mystore', [
     KedaiController::class, 'daftar'
 ])->middleware(['auth:akunpenjual', 'verified'])->name('mystore');
 
+// kirim data buat daftar kedai
 Route::post('/akunpenjual/actionregisterKedai', [
     KedaiController::class, 'actionregisterKedai'
 ])->middleware(['auth:akunpenjual', 'verified'])->name('actionregisterKedai');
+
+// kirim data buat edit kedai
+Route::post('/akunpenjual/actioneditkedai', [
+    KedaiController::class, 'actioneditkedai'
+])->middleware(['auth:akunpenjual', 'verified'])->name('actioneditkedai');
+
+// nampilin menu kedai
+Route::get ('/menukedai', [menuController::class, 'showMenuKedai']);
+
+// nampilin view tambah menu
+Route::get ('/uploadmenu/form', [menuController::class, 'showFormMenu']);
+
+// ngirim data tambah menu
+Route::post ('/uploadmenu', [menuController::class, 'uploadMenu']);
+
+// mengedit menu
+Route::get ('/menukedai/{menuID}/edit', [menuController::class, 'editMenu']);
+Route::put ('/menukedai/{menuID}', [menuController::class, 'updateMenu']);
 
 Route::middleware('auth:akunpenjual')->group(function () {
     Route::get('/akunpenjual/profile', [ProfileController::class, 'edit'])->name('akunpenjual.profile.edit');

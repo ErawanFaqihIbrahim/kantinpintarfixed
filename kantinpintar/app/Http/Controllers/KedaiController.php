@@ -45,20 +45,33 @@ class KedaiController extends Controller
     {
         $penjualID = Auth::guard('akunpenjual')->id(); // Mendapatkan ID penjual yang sedang login
 
-        $user = new Kedai;
+        $user = AkunPenjual::find($penjualID);
         $user->kedaiNama = $request->kedaiNama;
         $user->kedaiKeterangan = $request->kedaiKeterangan;
         $user->kedaiBuka = $request->kedaiBuka;
         $user->kedaiTutup = $request->kedaiTutup;
         // $user->kedaiLogo = $file->getClientOriginalName();
-        $user->akunPenjualID = $penjualID; // Memasukkan ID penjual ke dalam kolom akunPenjualID
-
         $user->save();
 
         // Update nilai is_daftar menjadi true pada model AkunPenjual yang sedang login
         $penjual = AkunPenjual::find($penjualID);
         $penjual->is_daftar = true;
         $penjual->save();
+
+        return view('/akunpenjual.dashboard');
+    }
+
+    public function actioneditKedai(Request $request)
+    {
+        $penjualID = Auth::guard('akunpenjual')->id(); // Mendapatkan ID penjual yang sedang login
+
+        $user = AkunPenjual::find($penjualID);
+        $user->kedaiNama = $request->kedaiNama;
+        $user->kedaiKeterangan = $request->kedaiKeterangan;
+        $user->kedaiBuka = $request->kedaiBuka;
+        $user->kedaiTutup = $request->kedaiTutup;
+        // $user->kedaiLogo = $file->getClientOriginalName();
+        $user->save();
 
         return view('/akunpenjual.dashboard');
     }

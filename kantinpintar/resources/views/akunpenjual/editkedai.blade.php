@@ -266,42 +266,50 @@
 
 <body>
 
-    <form action="('actionregisterKedai')" method="post">
-
-    <div class="daftarkan-kedai screen">
-        <h1 class="title">Edit Kedai</h1>
-        <div class="group-368">
-            <div class="kedai-container">
-                <div class="nama-kedai"><span class="poppins-normal-black-14px">Nama Kedai</span><span
-                        class="span1">*</span>
+    <form action="actioneditkedai" method="post">
+        @csrf
+        <div class="daftarkan-kedai screen">
+            <h1 class="title">Edit Kedai</h1>
+            <div class="group-368">
+                <div class="kedai-container">
+                    <div class="nama-kedai"><span class="poppins-normal-black-14px">Nama Kedai</span><span
+                            class="span1">*</span>
+                    </div>
+                    <div class="cth-kedai-barokah"><input type="text" name="kedaiNama" id="kedaiNama"
+                            value="{{ Auth::guard('akunpenjual')->user()->kedaiNama }}"
+                            placeholder="cth: Kedai Barokah"></div>
                 </div>
-                <div class="cth-kedai-barokah"><input type="text" placeholder="cth: Kedai Barokah"></div>
             </div>
-        </div>
-        <img class="group-100" src="{{ URL::asset('image/group-100.png') }}" alt="Group 100" />
-        <div class="inputfile">
-            {{-- <span id="imageName"></span><span><input id="inputTag" name="menuGambar" type="file"/> --}}
-        <span id="imageName"></span><span><input id="inputTag" name="menuGambar" type="file"/></span>
-        </div>
-        <div class="group-369">
-            <div class="kedai-container">
-                <div class="keterangan poppins-normal-black-14px">Keterangan</div>
-                <div class="cth-kedai-barokah"><input type="text" placeholder="cth: dijamin enak"></div>
+            <img class="group-100" src="{{ URL::asset('image/group-100.png') }}" alt="Group 100" />
+            <div class="inputfile">
+                {{-- <span id="imageName"></span><span><input id="inputTag" name="menuGambar" type="file"/> --}}
+                <span id="imageName"></span><span><input id="inputTag" name="menuGambar" type="file" /></span>
             </div>
-        </div>
-        <div class="group-369">
-            <div class="kedai-container">
-                <div class="keterangan poppins-normal-black-14px">Waktu Buka</div>
-                <div class="cth-kedai-barokah"><input type="text" placeholder="cth: 07.00 WIB"></div>
+            <div class="group-369">
+                <div class="kedai-container">
+                    <div class="keterangan poppins-normal-black-14px">Keterangan</div>
+                    <div class="cth-kedai-barokah"><input type="text" name="kedaiKeterangan" id="kedaiKeterangan"
+                            value="{{ Auth::guard('akunpenjual')->user()->kedaiKeterangan }}"
+                            placeholder="cth: dijamin enak"></div>
+                </div>
             </div>
-        </div>
-        <div class="group-369">
-            <div class="kedai-container">
-                <div class="keterangan poppins-normal-black-14px">Waktu Tutup</div>
-                <div class="cth-kedai-barokah"><input type="text" placeholder="cth: 17.00  WIB"></div>
+            <div class="group-369">
+                <div class="kedai-container">
+                    <div class="keterangan poppins-normal-black-14px">Waktu Buka</div>
+                    <div class="cth-kedai-barokah"><input type="text" name="kedaiBuka" id="kedaiBuka"
+                            value="{{ Auth::guard('akunpenjual')->user()->kedaiBuka }}" placeholder="cth: 07.00 WIB">
+                    </div>
+                </div>
             </div>
-        </div>
-        {{-- <div class="waktu-buka poppins-bold-black-16px">Waktu Buka</div>
+            <div class="group-369">
+                <div class="kedai-container">
+                    <div class="keterangan poppins-normal-black-14px">Waktu Tutup</div>
+                    <div class="cth-kedai-barokah"><input type="text" name="kedaiTutup" id="kedaiTutup"
+                            value="{{ Auth::guard('akunpenjual')->user()->kedaiTutup }}" placeholder="cth: 17.00  WIB">
+                    </div>
+                </div>
+            </div>
+            {{-- <div class="waktu-buka poppins-bold-black-16px">Waktu Buka</div>
         <div class="flex-row">
             <div class="place poppins-bold-black-16px">Hari</div>
             <div class="jam-buka poppins-bold-black-16px">Jam Buka</div>
@@ -314,16 +322,16 @@
             <div class="text-3 text">&amp;<br />&amp;<br />&amp;<br />&amp;<br />&amp;<br />&amp;</div>
             <p class="text-2 text poppins-medium-congo-brown-16px"><br /><br /><br /><br /><br /></p>
         </div> --}}
-        <div class="group-201">
-            <button name="daftar" type="submit" class="daftar-kedai" style="border:none">Konfirmasi</button>
+            <div class="group-201">
+                <button name="daftar" type="submit" class="daftar-kedai" style="border:none">Konfirmasi</button>
+            </div>
         </div>
-    </div>
-    <script>
-        document.querySelectorAll("[name=test_redirect]")[0].addEventListener('change',
-            function() {
-                window.location = "/" + this.value;
-            });
-    </script>
+        <script>
+            document.querySelectorAll("[name=test_redirect]")[0].addEventListener('change',
+                function() {
+                    window.location = "/" + this.value;
+                });
+        </script>
 </body>
 
 </html>

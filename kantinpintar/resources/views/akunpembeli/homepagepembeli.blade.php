@@ -398,7 +398,8 @@
                     <a class="navbar-brand" href="/redeemvoucher1">
                         <div class="nominal">
                             <img src="{{ URL::asset('image/saldo.jpeg') }}" alt="home" style="width:130px;">
-                                <h5>{{ Auth::user()->saldoJumlah }}</h5>
+                            <h5>{{ number_format(Auth::user()->saldoJumlah, 0, ',', '.') }}
+                            </h5>
                         </div>
                     </a>
                 </li>
@@ -430,13 +431,13 @@
                 <div class="media border p-3">
                     {{-- product --}}
 
-                    <a href="homepage" class="con-link">
-                        <img src="{{ URL::asset('image/cupcake.png') }}" class="align-self-center mr-3"
+                    <a href="menupembeli/{{$kedai -> id}}" class="con-link">
+                        <img src="{{ $kedai->kedaiLogo }}" class="align-self-center mr-3"
                             style="width:40px;">
                     </a>
 
                     <div class="media-body">
-                        <a href="homepage" class="con-link">
+                        <a href="menupembeli/{{$kedai -> id}}" class="con-link">
                             <h3><b>{{ $kedai->kedaiNama }}</b></h3>
                             {{-- pname --}}
 

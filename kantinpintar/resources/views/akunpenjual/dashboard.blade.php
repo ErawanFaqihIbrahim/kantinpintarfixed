@@ -250,16 +250,16 @@
             border-radius: 33px;
             box-shadow: 0px 6px 4px #00000040;
             display: flex;
-            justify-content: flex-end;
+            justify-content: center;
             width: 289px;
-            padding: 0 28px;
+            /* padding: 0 50px; */
             height: 66px;
         }
 
         .title {
             color: white;
             font-family: poppins;
-            font-size: 16px;
+            font-size: 24px;
             font-weight: 700;
         }
     </style>
@@ -270,7 +270,11 @@
     <div class="homepage">
         <div class="overlap-group5">
             <div class="overlap-group2">
-                <h1 class="title"><input type="text" style="background-color: transparent; border:none; color:rgba(120, 156, 87, 1)" placeholder="Daftarkan toko dahulu" value="{{ Auth::user()->kedaiNama }}"></h1>
+                @if (Auth::guard('akunpenjual')->user()->is_daftar)
+                    <h1 class="title">{{ Auth::guard('akunpenjual')->user()->kedaiNama }}</h1>
+                @else
+                    <h1 class="title">Daftarkan toko dahulu</h1>
+                @endif
             </div>
         </div>
 
@@ -292,12 +296,20 @@
                 </a>
             </div>
         </div>
-        <div class="overlap-group4">
-            <div class="rectangle-86-1"></div>
-            <div class="group-391">
-                <img src="{{ URL::asset('image/logout.jpeg') }}" alt="logout" style="width:38px;">
+
+        <form method="POST" action="{{ route('akunpenjual.logout') }}">
+            @csrf
+            <div class="overlap-group4">
+                <div class="rectangle-86-1"></div>
+                <div class="group-391">
+                    <button type="submit" style="background-color: transparent; border:none; margin-top:4px">
+                        <img src="{{ URL::asset('image/logout.jpeg') }}" alt="logout" style="width:38px;">
+                    </button>
+                </div>
             </div>
-        </div>
+        </form>
+
+
 
         <div class="group-container">
             <a href="#">
@@ -306,7 +318,7 @@
                     <div class="place">Home</div>
                 </div>
             </a>
-            <a href="#">
+            <a href="/menukedai">
                 <div class="group-113">
                     <img class="round" src="{{ URL::asset('image/menu.jpeg') }}" alt="menu">
                     <div class="place">Menu</div>
