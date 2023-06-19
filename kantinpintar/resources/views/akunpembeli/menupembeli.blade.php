@@ -317,7 +317,7 @@
 
         <div class="flex-row">
             <h1 class="bakso-bapak-bambang valign-text-middle">{{ $namaKedai->kedaiNama }}</h1>
-            <a href="/jadwalkedai"><img class="icon-info-outline" src="{{ URL::asset('image/info-out.png') }}"
+            <a href="/jadwalkedai/{{ $namaKedai->id }}"><img class="icon-info-outline" src="{{ URL::asset('image/info-out.png') }}"
                 alt='icon"info outline"' /></a>
         </div>
 

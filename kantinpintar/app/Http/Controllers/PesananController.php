@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\DB;
 
 class PesananController extends Controller
 {
+
+
+
     public function tambahPesanan($menuID, Request $req)
     {
         $dataMenu = Menu::find($menuID);

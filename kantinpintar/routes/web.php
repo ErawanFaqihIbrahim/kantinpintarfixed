@@ -6,6 +6,7 @@ use App\Http\Controllers\PembeliController;
 use App\Http\Controllers\KedaiController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PesananController;
+use App\Http\Controllers\jadwalController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -57,6 +58,14 @@ Route::get ('/akunpembeli/menupembeli/detail/{menuID}', [menuController::class, 
 //tambah pesanan ke keranjang
 Route::post ('/akunpembeli/menupembeli/detail/keranjang/{menuID}', [PesananController::class, 'insertpesanan']);
 Route::post ('/menu/detail/keranjang/{menuID}', [PesananController::class, 'tambahPesanan']);
+
+// jadwal kedai
+Route::get('/jadwalkedai/{id}', [jadwalController::class, 'showJadwal']);
+
+// penilaian
+Route::get('/akunpenjual/reviewkedai', function () {
+    return view('akunpembeli.reviewkedai');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -20,58 +20,57 @@
     <div class="e1_88 container-fluid">
 
         <div class="e1_89"></div>
-        @foreach ($jadwalKedai as $kedainama)
+        {{-- @foreach ($jadwalKedai as $kedainama) --}}
             <div class="e1_90">
-                <h1><b>{{ $kedainama->kedaiNama}}</b></h1>
+                <h1><b>{{ $jadwalKedai->kedaiNama }}</b></h1>
             </div>
-        @endforeach
+        {{-- @endforeach --}}
         <span class="e1_91">Jam Operasional</span>
-        @foreach ($jadwalKedai as $kedai)
-            <div class="e1_92"> <b class="e1_93">Senin</b> <b class="e1_94">{{ $kedai->kedaiBuka }} -
-                    {{ $kedai->kedaiTutup }}</b>
+            <div class="e1_92"> <b class="e1_93">Senin</b> <b class="e1_94">{{ $jadwalKedai->kedaiBuka }} -
+                    {{ $jadwalKedai->kedaiTutup }}</b>
                 <div class=e1_95>
                     <img src="{{ URL::asset('image/group.png') }}" alt="">
                 </div>
-        @endforeach
-    </div>
-    <div class=e1_99><b class="e1_100">Selasa</b> <b class="e1_101">{{ $kedai->kedaiBuka }} -
-            {{ $kedai->kedaiTutup }}</b>
-        <div class=e1_102>
-            <img src="{{ URL::asset('image/group.png') }}" alt="">
+
+            </div>
+            <div class=e1_99><b class="e1_100">Selasa</b> <b class="e1_101">{{ $jadwalKedai->kedaiBuka }} -
+                    {{ $jadwalKedai->kedaiTutup }}</b>
+                <div class=e1_102>
+                    <img src="{{ URL::asset('image/group.png') }}" alt="">
+                </div>
+            </div>
+            <div class=e1_106><b class="e1_107">Rabu</b> <b class="e1_108">{{ $jadwalKedai->kedaiBuka }} -
+                    {{ $jadwalKedai->kedaiTutup }}</b>
+                <div class=e1_109>
+                    <img src="{{ URL::asset('image/group.png') }}" alt="">
+                </div>
+            </div>
+            <div class=e1_113><b class="e1_114">Kamis</b> <b class="e1_115">{{ $jadwalKedai->kedaiBuka }} -
+                    {{ $jadwalKedai->kedaiTutup }}</b>
+                <div class=e1_116>
+                    <img src="{{ URL::asset('image/group.png') }}" alt="">
+                </div>
+            </div>
+            <div class=e1_120><b class="e1_121">Jumat</b> <b class="e1_122">{{ $jadwalKedai->kedaiBuka }} -
+                    {{ $jadwalKedai->kedaiTutup }}</b>
+                <div class=e1_123>
+                    <img src="{{ URL::asset('image/group.png') }}" alt="">
+                </div>
+            </div>
+            <div class=e1_127><b class="e1_128">Sabtu</b> <b class="e1_129">{{ $jadwalKedai->kedaiBuka }} -
+                    {{ $jadwalKedai->kedaiTutup }}</b>
+                <div class=e1_130>
+                    <img src="{{ URL::asset('image/group.png') }}" alt="">
+                </div>
+            </div>
+        <div class=e1_134><b class="e1_135">Minggu</b> <b class="e1_136">Tutup</b>
+            <div class=e1_137>
+                <img src="{{ URL::asset('image/group.png') }}"alt="">
+            </div>
         </div>
-    </div>
-    <div class=e1_106><b class="e1_107">Rabu</b> <b class="e1_108">{{ $kedai->kedaiBuka }} -
-            {{ $kedai->kedaiTutup }}</b>
-        <div class=e1_109>
-            <img src="{{ URL::asset('image/group.png') }}" alt="">
-        </div>
-    </div>
-    <div class=e1_113><b class="e1_114">Kamis</b> <b class="e1_115">{{ $kedai->kedaiBuka }} -
-            {{ $kedai->kedaiTutup }}</b>
-        <div class=e1_116>
-            <img src="{{ URL::asset('image/group.png') }}" alt="">
-        </div>
-    </div>
-    <div class=e1_120><b class="e1_121">Jumat</b> <b class="e1_122">{{ $kedai->kedaiBuka }} -
-            {{ $kedai->kedaiTutup }}</b>
-        <div class=e1_123>
-            <img src="{{ URL::asset('image/group.png') }}" alt="">
-        </div>
-    </div>
-    <div class=e1_127><b class="e1_128">Sabtu</b> <b class="e1_129">{{ $kedai->kedaiBuka }} -
-            {{ $kedai->kedaiTutup }}</b>
-        <div class=e1_130>
-            <img src="{{ URL::asset('image/group.png') }}" alt="">
-        </div>
-    </div>
-    <div class=e1_134><b class="e1_135">Minggu</b> <b class="e1_136">Tutup</b>
-        <div class=e1_137>
-            <img src="{{ URL::asset('image/group.png') }}"alt="">
-        </div>
-    </div>
-    <a href="">
-    <div class=e1_141><b class="e1_142">Kembali</b>
-    </a>
+        <a href="">
+            <div class=e1_141><b class="e1_142">Kembali</b>
+        </a>
         <div class="e1_143"><span class="material-symbols-outlined">
                 arrow_back_ios_new
             </span></div>
@@ -80,7 +79,7 @@
         <div class="e1_145"></div>
         <div class=e1_146>
             <div class=e1_147><b class="e1_148">Penilaian</b>
-                <div class=e1_149><span class="e1_150">{{$showRating}}/5</span>
+                <div class=e1_149><span class="e1_150">{{ $showRating }}/5</span>
                     <div class=e1_151>
                         <div class="e1_152"><i class="icon-star"></i></div>
                         <div class="e1_153"><i class="icon-star"></i></div>
